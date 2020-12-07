@@ -11,9 +11,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.RDFWriter;
 import org.apache.jena.rdf.model.ResIterator;
-import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
@@ -150,29 +148,31 @@ public class InferenceService {
 		log.info("Parsing RDF type");
 		ResIterator resIT = data.listResourcesWithProperty(RDF.type);
 		while (resIT.hasNext()) {
+
+			log.info("Start Time in parsing:" + System.currentTimeMillis() + "ms");
 			org.apache.jena.rdf.model.Resource rsc = resIT.next();
-
+			log.info(rsc.toString());
 			StmtIterator it_main = inf.listStatements(rsc, RDF.type, n);
-			while (it_main.hasNext()) {
-				Statement stmt = it_main.next();
-				result.add(stmt);
-				log.info(stmt.getString());
-			}
-
+			log.info("Start Time to model A:" + System.currentTimeMillis() + "ms");
+			Model a = it_main.toModel();
+			log.info("Start Time add to result model:" + System.currentTimeMillis() + "ms");
+			result.add(a);
+			
+			log.info("Start Time to model B:" + System.currentTimeMillis() + "ms");
 			StmtIterator it_prop = inf.listStatements(rsc, p, n);
-			while (it_prop.hasNext()) {
-				Statement p_stmt = it_prop.next();
-				result.add(p_stmt);
-				log.info(p_stmt.getString());
-			}
-		}
+			
+			Model b = it_prop.toModel();
+			log.info("Start Time add to result model:" + System.currentTimeMillis() + "ms");
+			result.add(b);
+			log.info("End Time to model B:" + System.currentTimeMillis() + "ms");
 
+		}
+		long start = System.currentTimeMillis();
 		log.info("Write to file");
-		RDFWriter fasterWriter = result.getWriter("RDF/XML");
-		fasterWriter.setProperty("allowBadURIs","true");
-		fasterWriter.setProperty("relativeURIs","");
-		fasterWriter.setProperty("tab","0");
-		fasterWriter.write(result, os, "RDF/XML");
+		result.write(os, "RDF/XML");
+		long end = System.currentTimeMillis();
+		log.info("Time takenvto write to file:" + (end - start) + "ms");
+
 	}
 
 }
