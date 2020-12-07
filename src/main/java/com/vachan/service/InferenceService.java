@@ -2,6 +2,8 @@ package com.vachan.service;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.InfModel;
@@ -29,11 +31,15 @@ public class InferenceService {
 	private Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
 
 	private Logger log = LoggerFactory.getLogger(InferenceService.class);
-	private String output_dir = "/jena_output";
+	private String root = System.getProperty("user.dir");
 
 	private OntModel loadOntModel() {
-		String resource = InferenceService.class.getClassLoader().getResource("harbour_politica_ontology_trimmed.owl")
-				.getFile();
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current relative path is: " + s);
+
+		String resource = s + "/data/harbour_politica_ontology_trimmed.owl";
+		System.out.println(resource);
 		OntModel ont_model = ModelFactory.createOntologyModel();
 		try {
 			ont_model.read(resource);
@@ -48,7 +54,12 @@ public class InferenceService {
 	public void loadSingle() throws Exception {
 		long start = System.currentTimeMillis();
 
-		String resource = InferenceService.class.getClassLoader().getResource("single_node.xml").getFile();
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current relative path is: " + s);
+
+		String resource = s + "/data/single_node.xml";
+		System.out.println(resource);
 		Model data = ModelFactory.createDefaultModel();
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
@@ -66,7 +77,11 @@ public class InferenceService {
 	public void load500Nodes() throws Exception {
 		long start = System.currentTimeMillis();
 
-		String resource = InferenceService.class.getClassLoader().getResource("500_nodes.xml").getFile();
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current relative path is: " + s);
+
+		String resource = s + "/data/500_nodes.xml";
 		Model data = ModelFactory.createDefaultModel();
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
@@ -84,7 +99,11 @@ public class InferenceService {
 	public void load2500Nodes() throws Exception {
 		long start = System.currentTimeMillis();
 
-		String resource = InferenceService.class.getClassLoader().getResource("2500_nodes.xml").getFile();
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current relative path is: " + s);
+
+		String resource = s + "/data/2500_nodes.xml";
 		Model data = ModelFactory.createDefaultModel();
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
@@ -102,7 +121,11 @@ public class InferenceService {
 	public void load10kNodes() throws Exception {
 		long start = System.currentTimeMillis();
 
-		String resource = InferenceService.class.getClassLoader().getResource("10k_nodes.xml").getFile();
+		Path currentRelativePath = Paths.get("");
+		String s = currentRelativePath.toAbsolutePath().toString();
+		System.out.println("Current relative path is: " + s);
+
+		String resource = s + "/data/10k_nodes.xml";
 		Model data = ModelFactory.createDefaultModel();
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
