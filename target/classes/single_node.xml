@@ -1,0 +1,45 @@
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:neovoc="neo4j://vocabulary#"
+	xmlns:neoind="neo4j://individuals#"
+	xmlns:cc="http://creativecommons.org/ns#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"	
+	xmlns:hp="urn:absolute://harbourpolitica/ontology/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:hps="urn:absolute://harbourpolitica/ontology/StoryUniverse/"
+	xmlns:cert="http://www.w3.org/ns/auth/cert#"
+	xmlns:wgs84pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	xmlns:d0="http://www.ontologydesignpatterns.org/ont/d0.owl#"
+	xmlns:dbo="http://dbpedia.org/ontology/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:dul="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+	xmlns:vann="http://purl.org/vocab/vann/"
+	xmlns:wikidata="http://www.wikidata.org/entity/"
+	xmlns:cidoccrm="http://purl.org/NET/cidoc-crm/core#"
+	xmlns:prov="http://www.w3.org/ns/prov#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+
+
+<rdf:Description rdf:about="neo4j://individuals#501">
+	<hp:hasCurrentPosition>Ex-Cabinet Minister</hp:hasCurrentPosition>
+	<hp:wikipediaUrl>https://en.wikipedia.org/wiki/B._Shankaranand</hp:wikipediaUrl>
+	<rdf:type rdf:resource="urn:absolute://harbourpolitica/ontology/Candidate"/>
+	<hp:edbId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">703</hp:edbId>
+	<hp:identifier>0c1a3d01-5340-4b1e-93a3-d682e6d0fb62</hp:identifier>
+	<hp:uri>urn:absolute://harbourpolitica/ontology/Candidate/0c1a3d01-5340-4b1e-93a3-d682e6d0fb62</hp:uri>
+	<rdf:type rdf:resource="neo4j://vocabulary#owl__NamedIndividual"/>
+	<hp:sex>M</hp:sex>
+	<hp:name>B. Shankaranand</hp:name>
+	<hp:latestElectionResult>LOST</hp:latestElectionResult>
+	<hp:age rdf:datatype="http://www.w3.org/2001/XMLSchema#long">84</hp:age>
+	<hp:hpIdn>CAN1072001</hp:hpIdn>
+	<hp:wikidataId>http://www.wikidata.org/entity/Q4834211</hp:wikidataId>
+	<rdf:type rdf:resource="urn:absolute://harbourpolitica/ontology/ElectionUniverse"/>
+</rdf:Description>
+
+</rdf:RDF>
