@@ -11,13 +11,12 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.RDFWriter;
 import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.reasoner.Reasoner;
 import org.apache.jena.reasoner.ReasonerRegistry;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.RDF;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -169,7 +168,11 @@ public class InferenceService {
 		}
 
 		log.info("Write to file");
-		RDFDataMgr.write(os, result, Lang.RDFXML);
+		RDFWriter fasterWriter = result.getWriter("RDF/XML");
+		fasterWriter.setProperty("allowBadURIs","true");
+		fasterWriter.setProperty("relativeURIs","");
+		fasterWriter.setProperty("tab","0");
+		fasterWriter.write(result, os, "RDF/XML");
 	}
 
 }
