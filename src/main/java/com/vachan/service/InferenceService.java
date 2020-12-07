@@ -64,7 +64,8 @@ public class InferenceService {
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
 		log.info("Created Inferred Model");
-		OutputStream os = new FileOutputStream("jena_output_singlenode.xml");
+		String out_file = s + "jena_output_singlenode.xml";
+		OutputStream os = new FileOutputStream(out_file);
 		generateInferredModel(data, inf, os);
 		log.info("Completed");
 		os.flush();
@@ -86,7 +87,8 @@ public class InferenceService {
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
 		log.info("Created Inferred Model");
-		OutputStream os = new FileOutputStream("jena_output_500Nodes.xml");
+		String out_file = s + "jena_output_500Nodes.xml";
+		OutputStream os = new FileOutputStream(out_file);
 		generateInferredModel(data, inf, os);
 		log.info("Completed");
 		os.flush();
@@ -108,7 +110,8 @@ public class InferenceService {
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
 		log.info("Created Inferred Model");
-		OutputStream os = new FileOutputStream("jena_output_2500Nodes.xml");
+		String out_file = s + "jena_output_2500Nodes.xml";
+		OutputStream os = new FileOutputStream(out_file);
 		generateInferredModel(data, inf, os);
 		log.info("Completed");
 		os.flush();
@@ -130,7 +133,8 @@ public class InferenceService {
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
 		log.info("Created Inferred Model");
-		OutputStream os = new FileOutputStream("jena_output_10kNodes.xml");
+		String out_file = s + "jena_output_10kNodes.xml";
+		OutputStream os = new FileOutputStream(out_file);
 		generateInferredModel(data, inf, os);
 		log.info("Completed");
 		os.flush();
