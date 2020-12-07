@@ -64,7 +64,7 @@ public class InferenceService {
 		data.read(resource);
 		InfModel inf = ModelFactory.createInfModel(reasoner, ontModel, data);
 		log.info("Created Inferred Model");
-		String out_file = s + "jena_output_singlenode.xml";
+		String out_file = s + "/data/jena_output_singlenode.xml";
 		OutputStream os = new FileOutputStream(out_file);
 		generateInferredModel(data, inf, os);
 		log.info("Completed");
@@ -157,12 +157,14 @@ public class InferenceService {
 			while (it_main.hasNext()) {
 				Statement stmt = it_main.next();
 				result.add(stmt);
+				log.info(stmt.getString());
 			}
 
 			StmtIterator it_prop = inf.listStatements(rsc, p, n);
 			while (it_prop.hasNext()) {
 				Statement p_stmt = it_prop.next();
 				result.add(p_stmt);
+				log.info(p_stmt.getString());
 			}
 		}
 
